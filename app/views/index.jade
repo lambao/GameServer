@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  div
+    form(id='signup',action='/signup',method='post')
+        label(for='username') Username
+        input(id='username',type='text',value='',placeholder='Your username',name='username')
+        input(type='submit',value='Login')

@@ -16,6 +16,7 @@ exports.initGame = function(sio, socket){
     gameSocket = socket;
     gameSocket.emit('connected', { message: "You are connected!" });
 
+    // Init Host Service and player Service
     hostService.init(sio, socket);
     playerService.init(sio, socket);
     // Host Events
