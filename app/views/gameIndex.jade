@@ -1,5 +1,15 @@
 extends layout
 
 block content
-    h1 test
-    h1 #{username}
+
+    script(src='/javascript/client.js')
+
+    h1 Game Menu
+    div#userinfo
+        span Your username:
+        span#username #{username}
+    div
+        h3 Room List
+        ul#roomlist
+    div#createroom
+        button#btnCreate Create Room

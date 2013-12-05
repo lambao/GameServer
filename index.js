@@ -36,6 +36,7 @@ app.configure(function () {
     app.use(express.cookieParser());
 
     app.use(express.session({secret: '1234567890QWERTY'}));
+
     // Using body parse
     app.use(express.bodyParser());
 
@@ -57,8 +58,11 @@ app.configure(function () {
     // Homepage
     app.get('/', routes.index);
 
-    //Game
+    // Game homepage
     app.get('/game', loginService.afterLogin);
+
+    // Create room
+    app.get('/creategame', routes.index)
 
     // Service for signup
     app.post('/signup',loginService.login);
@@ -78,8 +82,8 @@ io.set('log level', 3);
 
 // Listen for Socket.IO Connections. Once connected, start the game logic.
 io.sockets.on('connection', function (socket) {
-    util.log('A client connected');
+    util.log('A client connected: ' +  socket.id);
+//    gameserver.initGame(io, socket);
+ //   socket.emit('connected', { hello: 'hello from server' });
     gameserver.initGame(io, socket);
 });
-
-
